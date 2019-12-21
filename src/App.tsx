@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+   const name: string = "hello";
+   console.log(name);
+   
   return (
     <div className="App">
       <header className="App-header">
