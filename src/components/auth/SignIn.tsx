@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 export const SignIn: React.FC = () => {
-  const [logInData, setLogInData] = useState< {email:string,password:string}| {}>({});
+  const [logInData, setLogInData] = useState<
+    { email: string; password: string } | {}
+  >({});
 
   const onHandleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setLogInData({
@@ -15,20 +17,32 @@ export const SignIn: React.FC = () => {
   };
   return (
     <div className="container">
-      <form className="form" onSubmit ={OnHandleSubmit}>
+      <form className="form" onSubmit={OnHandleSubmit}>
         <h5 className="title">Sign In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" required onChange={onHandleChange}/>
+          <input type="email" id="email" required onChange={onHandleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" required onChange={onHandleChange}/>
+          <input
+            type="password"
+            id="password"
+            required
+            onChange={onHandleChange}
+          />
         </div>
         <div className="input-field">
           <button className="btn btn-color lighten-1 z-depth-0">Login</button>
-
           <div className="red-text center"></div>
+          <div className="input-field">
+            <button className="btn fb-login z-depth-0">
+              Login with Facebook
+            </button>
+            <button className="btn google-login  z-depth-0">
+              Login with Google
+            </button>
+          </div>
         </div>
       </form>
     </div>

@@ -57,6 +57,24 @@ textarea.materialize-textarea:focus:not([readonly]) {
   background-color: #00c3ffb9;
 }
 
-.input-field input{
-  color:whitesmoke;
+.input-field input {
+  color: whitesmoke;
+}
+
+.fb-login {
+  background-color: #3b5998;
+  display: block;
+  margin-bottom: 5px;
+}
+.fb-login:hover,
+.fb-login:focus {
+  background-color: #3b6698;
+}
+.google-login {
+  background-color: #db3737;
+  display: block;
+}
+.google-login:hover,
+.google-login:focus {
+  background-color: #db4437;
 }
