@@ -52,3 +52,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .btn-color {
   background-color: #00c3ff;
 }
+.btn-color:hover,
+.btn-color:focus {
+  background-color: #00c3ffb9;
+}
+
+.input-field input{
+  color:whitesmoke;
+}
