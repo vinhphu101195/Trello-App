@@ -12,7 +12,7 @@ export const Navbar: React.FC<Props> = () =>{
             <nav className="nav-wrapper grey darken-3">
                 <div className="container">
                     <Link to="/" className="brand-logo">PhuChau Trello</Link>
-                    <SignInNav></SignInNav>
+                    <SignOutNav></SignOutNav>
                 </div>
             </nav>
         );
