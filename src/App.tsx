@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { SignIn } from "./components/auth/SignIn";
 import { SignUp } from "./components/auth/SignUp";
+import {Navbar} from "./components/navLink/Navbar";
 
 function App() {
   const name: string = "hello";
@@ -10,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Navbar></Navbar>
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
