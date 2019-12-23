@@ -6,14 +6,13 @@ interface Props {}
 export const ProjectColumn: React.FC<Props> = () => {
   return (
     <div className="container-column">
-      <h5 className="column-title">Example Column</h5>
+      <div className="column-header">
+        <h5 className="column-title">Example Column</h5>
+        <div className="column-header-addTask">+</div>
+        <span className="tooltiptext">Add more task</span>
+      </div>
       <div className="column-list">
         <ProjectTask></ProjectTask>
-        <ProjectTask></ProjectTask> <ProjectTask></ProjectTask>{" "}
-        <ProjectTask></ProjectTask> <ProjectTask></ProjectTask>{" "}
-        <ProjectTask></ProjectTask> <ProjectTask></ProjectTask>{" "}
-        <ProjectTask></ProjectTask> <ProjectTask></ProjectTask>{" "}
-        <ProjectTask></ProjectTask> <ProjectTask></ProjectTask>
       </div>
     </div>
   );
