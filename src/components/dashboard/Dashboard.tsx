@@ -6,15 +6,11 @@ interface Props {}
 export const Dashboard: React.FC<Props> = () => {
   return (
     <div className="container-dashboard">
-      <div className= "container-sub-dashboard">
+      <div className="container-sub-dashboard">
         <ProjectColumn></ProjectColumn>
         <ProjectColumn></ProjectColumn>
         <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
+
       </div>
     </div>
   );
