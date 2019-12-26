@@ -150,6 +150,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 40px;
   font-size: 20px;
 }
+.column-add-title:hover{
+  cursor: pointer;
+}
 .column-title {
   padding: 5px;
   margin-left: 5px;
