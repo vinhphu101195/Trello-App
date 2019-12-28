@@ -198,7 +198,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .add-column-control{
-  display:black;
+  display:block;
 }
 
 .list-add-control{

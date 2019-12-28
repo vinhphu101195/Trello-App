@@ -1,6 +1,5 @@
 import React from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
-import { ProjectNewColumn } from "../projects/ProjectNewColumn";
 
 interface Props {}
 
