@@ -10,6 +10,23 @@ export const ProjectColumn: React.FC<Props> = () => {
         <h5 className="column-title">Example Column</h5>
         <div className="column-header-addTask">+</div>
         <span className="tooltiptext">Add more task</span>
+
+        <div className="add-task-control">
+          <input
+            className="list-name-input"
+            type="text"
+            name="name"
+            placeholder="Enter task..."
+            dir="auto"
+          ></input>
+          <div className="list-add-control row">
+            <button className="btn btn-color lighten-1 z-depth-0">
+              {" "}
+              Add List
+            </button>
+            <div className="list-add-control-cancel"> X</div>
+          </div>
+        </div>
       </div>
       <div className="column-list">
         <ProjectTask></ProjectTask>

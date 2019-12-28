@@ -200,6 +200,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .add-column-control{
   display:block;
 }
+.add-task-control{
+  display: block;
+}
 
 .list-add-control{
   display: flex;
@@ -208,4 +211,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .list-add-control-cancel{
   font-size: 25px;
   margin-left: 10px;
+}
+.list-name-input{
+  border: 1px solid lightgrey !important;
+  border-radius: 2px  !important;
+  padding: 8px  !important;
+  background-color: white !important;
+  width: 80% !important;
+  margin-left: 15px !important;
+  height: 25% !important;
 }

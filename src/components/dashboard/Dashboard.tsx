@@ -16,7 +16,6 @@ export const Dashboard: React.FC<Props> = () => {
           <h5 className="column-add-title">+ Add another list</h5>
           <div className="add-column-control">
             <input
-              className="list-name-input"
               type="text"
               name="name"
               placeholder="Enter list title..."
