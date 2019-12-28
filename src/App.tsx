@@ -10,26 +10,14 @@ import {createTask} from './store/actions/ProjectActions';
 
 function App() {
 
-/* firebase.firestore().collection("project").doc("Must Do Column").set({c: "eat"}, { merge: true });
- */
-
- // check the save data, want to have an array 
-const test = {
-  id2: "outstudy"
-}
-
-createTask("Must Do Column",test);
-
-firebase.firestore().collection("project").onSnapshot((snapshot)=>{
-  const newTask = snapshot.docs.map(doc=>({
+//get data
+/* firebase.firestore().collection("project").onSnapshot((snapshot)=>{
+  const newTask:any = snapshot.docs.map(doc=>({
     id:doc.id,
     ...doc.data()
   }))
-  console.log(newTask);
-  
-})
-
-
+  console.log(Object.values(newTask[0].tasks));
+}) */
 
   return (
     <BrowserRouter>

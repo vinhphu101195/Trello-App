@@ -139,7 +139,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .container-add-column {
   margin: 8px;
   width: 272px;
-  height: 50px;
+  height: fit-content;
   padding: 0px;
   border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.08);
@@ -150,7 +150,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-left: 40px;
   font-size: 20px;
 }
-.column-add-title:hover{
+.column-add-title:hover {
   cursor: pointer;
 }
 .column-title {
@@ -190,9 +190,22 @@ textarea.materialize-textarea:focus:not([readonly]) {
   right: -30px;
   z-index: 1;
 }
-.column-header-addTask:hover {
+.column-header-addTask:hover,.list-add-control-cancel:hover {
   cursor: pointer;
 }
-.column-header:hover .tooltiptext{
+.column-header:hover .tooltiptext {
   visibility: visible;
+}
+
+.add-column-control{
+  display:black;
+}
+
+.list-add-control{
+  display: flex;
+  margin: 5px 0 8px 8px;
+}
+.list-add-control-cancel{
+  font-size: 25px;
+  margin-left: 10px;
 }

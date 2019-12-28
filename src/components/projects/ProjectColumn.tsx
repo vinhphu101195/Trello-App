@@ -10,6 +10,7 @@ export const ProjectColumn: React.FC<Props> = () => {
         <h5 className="column-title">Example Column</h5>
         <div className="column-header-addTask">+</div>
         <span className="tooltiptext">Add more task</span>
+      
       </div>
       <div className="column-list">
         <ProjectTask></ProjectTask>
