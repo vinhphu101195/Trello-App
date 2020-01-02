@@ -1,13 +1,22 @@
 import React from "react";
 import { ProjectTask } from "./ProjectTask";
 
-interface Props {}
+interface Props {
+  information?: any;
+}
 
-export const ProjectColumn: React.FC<Props> = () => {
+export const ProjectColumn: React.FC<Props> = (props: Props) => {
+  const title:string = props.information.id;
+  delete props.information.id;
+  const tasks = Object.values(props.information);
+  console.log(tasks);
+  
+  
+
   return (
     <div className="container-column">
       <div className="column-header">
-        <h5 className="column-title">Example Column</h5>
+        <h5 className="column-title">{title}</h5>
         <div className="column-header-addTask">+</div>
         <span className="tooltiptext">Add more task</span>
 
@@ -29,8 +38,16 @@ export const ProjectColumn: React.FC<Props> = () => {
         </div>
       </div>
       <div className="column-list">
-        <ProjectTask></ProjectTask>
+        {showTask(tasks)}
       </div>
     </div>
   );
+};
+
+const showTask = (tasks: any) => {
+  if (tasks.length > 0) {
+    return tasks.map((element: string,index:number) => {
+      return <ProjectTask task={element} key={index}></ProjectTask>;
+    });
+  }
 };

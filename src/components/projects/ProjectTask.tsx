@@ -1,7 +1,9 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  task: string;
+}
 
-export const ProjectTask: React.FC<Props> = () => {
-  return <div className="container-task">hello my first project</div>;
+export const ProjectTask: React.FC<Props> = (props: Props) => {
+  return <div className="container-task">{props.task}</div>;
 };

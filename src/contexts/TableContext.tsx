@@ -26,8 +26,6 @@ const TableContextProvider = (props:Props) => {
       });
   }, []);
 
-  console.log(data);
-
   return (
     <TabContext.Provider value={{data:data}}>
       {props.children}

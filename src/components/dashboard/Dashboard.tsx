@@ -1,19 +1,20 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
-import {TabContext} from "../../contexts/TableContext";
-
+import { TabContext } from "../../contexts/TableContext";
 
 interface Props {}
 
 export const Dashboard: React.FC<Props> = () => {
-  const data = useContext(TabContext);
+  const getDataContext: any = useContext(TabContext);
 
   return (
     <div className="container-dashboard">
       <div className="container-sub-dashboard">
+        {/*        <ProjectColumn></ProjectColumn>
         <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
-        <ProjectColumn></ProjectColumn>
+        <ProjectColumn></ProjectColumn> */}
+        {showColumn(getDataContext.data)}
+
         <div className="container-add-column">
           {/*           if add column the title must diplay none, and add-column-control: display block
            */}{" "}
@@ -37,4 +38,12 @@ export const Dashboard: React.FC<Props> = () => {
       </div>
     </div>
   );
+};
+
+const showColumn = (columns: any) => {
+  if (columns.length > 0) {
+    return columns.map((element: object,index:number) => {
+      return <ProjectColumn information={element} key={index}></ProjectColumn>;
+    });
+  }
 };
