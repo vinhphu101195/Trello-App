@@ -3,12 +3,12 @@ import firebase from "../config/fbConfig";
 /* import  {}
  */
 interface Props {
-  children: () => JSX.Element | null;
+  children: React.ReactNode
 }
 
 export const TabContext = createContext<object>({});
 
-const TableContextProvider: React.FC<Props> = props => {
+const TableContextProvider = (props:Props) => {
   /*     const [data,setData] = useReducer<object>();
    */
   const [data, setData] = useState<object>({});
@@ -29,8 +29,8 @@ const TableContextProvider: React.FC<Props> = props => {
   console.log(data);
 
   return (
-    <TabContext.Provider value={{}}>
-      <props.children></props.children>
+    <TabContext.Provider value={{data:data}}>
+      {props.children}
     </TabContext.Provider>
   );
 };

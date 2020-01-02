@@ -21,11 +21,19 @@ function App() {
       <div className="App">
         <Navbar></Navbar>
         <Switch>
-          <Route path="/signin" component={SignIn}></Route>
+          <Route
+            path="/signin"
+            component={SignIn}
+          ></Route>
           <Route path="/signup" component={SignUp} />
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/"   render={() => {
+              return (
+                <TableContextProvider>
+                  <Dashboard></Dashboard>
+                </TableContextProvider>
+              );
+            }} />
         </Switch>
-        
       </div>
     </BrowserRouter>
   );

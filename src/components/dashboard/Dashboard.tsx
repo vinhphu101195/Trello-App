@@ -1,9 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
+import {TabContext} from "../../contexts/TableContext";
+
 
 interface Props {}
 
 export const Dashboard: React.FC<Props> = () => {
+  const data = useContext(TabContext);
+
   return (
     <div className="container-dashboard">
       <div className="container-sub-dashboard">
