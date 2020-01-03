@@ -7,14 +7,6 @@ import { Dashboard } from "./components/dashboard/Dashboard";
 import TableContextProvider from "./contexts/TableContext";
 
 function App() {
-  //get data
-  /* firebase.firestore().collection("project").onSnapshot((snapshot)=>{
-  const newTask:any = snapshot.docs.map(doc=>({
-    id:doc.id,
-    ...doc.data()
-  }))
-  console.log(Object.values(newTask[0].tasks));
-}) */
 
   return (
     <BrowserRouter>
