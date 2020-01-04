@@ -6,12 +6,10 @@ interface Props {
 }
 
 export const ProjectColumn: React.FC<Props> = (props: Props) => {
-  const title:string = props.information.id;
-  delete props.information.id;
-  const tasks = Object.values(props.information);
-  console.log(tasks);
-  
-  
+  const title: string = props.information.id;
+  const newData = {...props.information}
+  delete newData.id;
+  const tasks = Object.values(newData);
 
   return (
     <div className="container-column">
@@ -37,16 +35,14 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="column-list">
-        {showTask(tasks)}
-      </div>
+      <div className="column-list">{showTask(tasks)}</div>
     </div>
   );
 };
 
 const showTask = (tasks: any) => {
   if (tasks.length > 0) {
-    return tasks.map((element: string,index:number) => {
+    return tasks.map((element: string, index: number) => {
       return <ProjectTask task={element} key={index}></ProjectTask>;
     });
   }

@@ -1,17 +1,17 @@
 import React, { createContext, useState, useReducer, useEffect } from "react";
 import firebase from "../config/fbConfig";
-/* import  {}
- */
+import { ProjectReducer } from "../store/reducers/ProjectReducer";
+
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const TabContext = createContext<object>({});
 
-const TableContextProvider = (props:Props) => {
-  /*     const [data,setData] = useReducer<object>();
-   */
-  const [data, setData] = useState<object>({});
+const TableContextProvider = (props: Props) => {
+  const [initialState, setInitialState] = useState<object>({});
+
+  const [data, dispatch] = useReducer<any>(ProjectReducer, initialState);
 
   useEffect(() => {
     firebase
@@ -22,12 +22,12 @@ const TableContextProvider = (props:Props) => {
           id: doc.id,
           ...doc.data()
         }));
-        setData(newTask);
+        setInitialState(newTask);
       });
   }, []);
 
   return (
-    <TabContext.Provider value={{data:data}}>
+    <TabContext.Provider value={{ data: initialState, dispatch }}>
       {props.children}
     </TabContext.Provider>
   );
