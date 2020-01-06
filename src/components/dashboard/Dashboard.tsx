@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
 import { TabContext } from "../../contexts/TableContext";
 
@@ -6,14 +6,17 @@ interface Props {}
 
 export const Dashboard: React.FC<Props> = () => {
   const getDataContext: any = useContext(TabContext);
-  const [columnName, setColumnName] = useState<{ columnName: string }>();
+  const [columnName, setColumnName] = useState<string>();
+  const [keyOpen,setKeyOpen] = useState<boolean>(false);
 
   const onCreateColumn = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     getDataContext.dispatch({
       type: "ADD_COLUMN",
-      tableName: "vui ve khong quao"
+      tableName: columnName
     });
+    setColumnName("");
+    setKeyOpen(false);
   };
 
   return (
@@ -24,13 +27,17 @@ export const Dashboard: React.FC<Props> = () => {
         <div className="container-add-column">
           {/*           if add column the title must diplay none, and add-column-control: display block
            */}{" "}
-          <h5 className="column-add-title">+ Add another list</h5>
-          <div className="add-column-control">
+          <h5 className="column-add-title" onClick= {()=>{setKeyOpen(true)}}>+ Add another list</h5>
+          <div className={keyOpen? "add-column-control-open": "add-column-control-close"}>
             <input
               type="text"
               name="name"
               placeholder="Enter list title..."
-              dir="auto"
+              required
+              value = {columnName}
+              onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                setColumnName(e.currentTarget.value);
+              }}
             ></input>
             <div className="list-add-control row">
               <button
@@ -40,7 +47,7 @@ export const Dashboard: React.FC<Props> = () => {
                 {" "}
                 Add List
               </button>
-              <div className="list-add-control-cancel"> X</div>
+              <div className="list-add-control-cancel" onClick= {()=>{setKeyOpen(false)}}> X</div>
             </div>
           </div>
         </div>

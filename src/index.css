@@ -130,7 +130,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
-  width: 272px;
+  min-width: 272px;
+  max-width: 272px;
   background-color: #ebecf0;
   height: fit-content;
   display: flex;
@@ -156,6 +157,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .column-title {
   padding: 5px;
   margin-left: 5px;
+  overflow: auto;
+  max-width: 80%;
 }
 .column-list {
   padding: 8px;
@@ -197,8 +200,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
   visibility: visible;
 }
 
-.add-column-control{
+.add-column-control-open{
   display:block;
+}
+.add-column-control-close{
+  display:none;
 }
 .add-task-control{
   display: block;
