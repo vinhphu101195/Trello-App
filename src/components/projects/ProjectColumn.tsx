@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { ProjectTask } from "./ProjectTask";
+import { TabContext } from "../../contexts/TableContext";
+
 
 interface Props {
   information?: any;
@@ -7,11 +9,27 @@ interface Props {
 
 export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const [keyOpen, setKeyOpen] = useState<boolean>(false);
+  const [taskName, setTaskName] = useState<string>("");
+  const getDataContext: any = useContext(TabContext);
 
   const title: string = props.information.id;
   const newData = { ...props.information };
   delete newData.id;
   const tasks = Object.values(newData);
+  const numberOfTasks:any = tasks.length;
+
+  const onCreateTask = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    getDataContext.dispatch({
+      type: "ADD_TASK",
+      tableName: title,
+      taskNameData: {
+        [numberOfTasks]: taskName
+      }
+    });
+    setTaskName("");
+    setKeyOpen(false);
+  };
 
   return (
     <div className="container-column">
@@ -35,12 +53,14 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
           <input
             className="list-name-input"
             type="text"
-            name="name"
             placeholder="Enter task..."
-            dir="auto"
+            value={taskName}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => {
+              setTaskName(e.currentTarget.value);
+            }}
           ></input>
           <div className="list-add-control row">
-            <button className="btn btn-color lighten-1 z-depth-0">
+            <button className="btn btn-color lighten-1 z-depth-0"   onClick={onCreateTask} >
               {" "}
               Add List
             </button>

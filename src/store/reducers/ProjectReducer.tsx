@@ -13,6 +13,17 @@ export const ProjectReducer = (state: object[], action: any) => {
         console.log(error);
       }
       return [state];
+    case "ADD_TASK":
+      try {
+        firebase
+          .firestore()
+          .collection("project")
+          .doc(action.tableName)
+          .set(action.taskNameData, { merge: true });
+      } catch (error) {
+        console.log(error);
+      }
+      return [state];
     default:
       return state;
   }
