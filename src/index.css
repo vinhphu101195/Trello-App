@@ -206,9 +206,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .add-column-control-close{
   display:none;
 }
-.add-task-control{
-  display: block;
-}
 
 .list-add-control{
   display: flex;

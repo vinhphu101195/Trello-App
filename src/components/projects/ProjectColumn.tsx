@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProjectTask } from "./ProjectTask";
 
 interface Props {
@@ -6,8 +6,10 @@ interface Props {
 }
 
 export const ProjectColumn: React.FC<Props> = (props: Props) => {
+  const [keyOpen, setKeyOpen] = useState<boolean>(false);
+
   const title: string = props.information.id;
-  const newData = {...props.information}
+  const newData = { ...props.information };
   delete newData.id;
   const tasks = Object.values(newData);
 
@@ -15,10 +17,21 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
     <div className="container-column">
       <div className="column-header">
         <h5 className="column-title">{title}</h5>
-        <div className="column-header-addTask">+</div>
+        <div
+          className="column-header-addTask"
+          onClick={() => {
+            setKeyOpen(true);
+          }}
+        >
+          +
+        </div>
         <span className="tooltiptext">Add more task</span>
 
-        <div className="add-task-control">
+        <div
+          className={
+            keyOpen ? "add-column-control-open" : "add-column-control-close"
+          }
+        >
           <input
             className="list-name-input"
             type="text"
@@ -31,7 +44,15 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
               {" "}
               Add List
             </button>
-            <div className="list-add-control-cancel"> X</div>
+            <div
+              className="list-add-control-cancel"
+              onClick={() => {
+                setKeyOpen(false);
+              }}
+            >
+              {" "}
+              X
+            </div>
           </div>
         </div>
       </div>
