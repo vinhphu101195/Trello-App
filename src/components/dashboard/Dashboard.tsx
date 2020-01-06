@@ -1,4 +1,4 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState,useRef} from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
 import { TabContext } from "../../contexts/TableContext";
 
@@ -8,6 +8,7 @@ export const Dashboard: React.FC<Props> = () => {
   const getDataContext: any = useContext(TabContext);
   const [columnName, setColumnName] = useState<string>();
   const [keyOpen, setKeyOpen] = useState<boolean>(false);
+  const inputEl = useRef<HTMLInputElement|null>(null);
 
   const onCreateColumn = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ export const Dashboard: React.FC<Props> = () => {
       tableName: columnName
     });
     setColumnName("");
+    inputEl.current?.onreset;
     setKeyOpen(false);
   };
 
@@ -43,7 +45,7 @@ export const Dashboard: React.FC<Props> = () => {
               name="name"
               placeholder="Enter list title..."
               required
-              value={columnName}
+              ref={inputEl}
               onChange={(e: React.FormEvent<HTMLInputElement>) => {
                 setColumnName(e.currentTarget.value);
               }}
