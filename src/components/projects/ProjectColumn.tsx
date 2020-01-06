@@ -1,7 +1,6 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ProjectTask } from "./ProjectTask";
 import { TabContext } from "../../contexts/TableContext";
-
 
 interface Props {
   information?: any;
@@ -16,7 +15,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const newData = { ...props.information };
   delete newData.id;
   const tasks = Object.values(newData);
-  const numberOfTasks:any = tasks.length;
+  const numberOfTasks: any = tasks.length;
 
   const onCreateTask = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -60,7 +59,10 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
             }}
           ></input>
           <div className="list-add-control row">
-            <button className="btn btn-color lighten-1 z-depth-0"   onClick={onCreateTask} >
+            <button
+              className="btn btn-color lighten-1 z-depth-0"
+              onClick={onCreateTask}
+            >
               {" "}
               Add List
             </button>
