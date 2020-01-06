@@ -7,7 +7,7 @@ interface Props {}
 export const Dashboard: React.FC<Props> = () => {
   const getDataContext: any = useContext(TabContext);
   const [columnName, setColumnName] = useState<string>();
-  const [keyOpen,setKeyOpen] = useState<boolean>(false);
+  const [keyOpen, setKeyOpen] = useState<boolean>(false);
 
   const onCreateColumn = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -25,16 +25,25 @@ export const Dashboard: React.FC<Props> = () => {
         {showColumn(getDataContext.data)}
 
         <div className="container-add-column">
-          {/*           if add column the title must diplay none, and add-column-control: display block
-           */}{" "}
-          <h5 className="column-add-title" onClick= {()=>{setKeyOpen(true)}}>+ Add another list</h5>
-          <div className={keyOpen? "add-column-control-open": "add-column-control-close"}>
+          <h5
+            className="column-add-title"
+            onClick={() => {
+              setKeyOpen(true);
+            }}
+          >
+            + Add another list
+          </h5>
+          <div
+            className={
+              keyOpen ? "add-column-control-open" : "add-column-control-close"
+            }
+          >
             <input
               type="text"
               name="name"
               placeholder="Enter list title..."
               required
-              value = {columnName}
+              value={columnName}
               onChange={(e: React.FormEvent<HTMLInputElement>) => {
                 setColumnName(e.currentTarget.value);
               }}
@@ -47,7 +56,15 @@ export const Dashboard: React.FC<Props> = () => {
                 {" "}
                 Add List
               </button>
-              <div className="list-add-control-cancel" onClick= {()=>{setKeyOpen(false)}}> X</div>
+              <div
+                className="list-add-control-cancel"
+                onClick={() => {
+                  setKeyOpen(false);
+                }}
+              >
+                {" "}
+                X
+              </div>
             </div>
           </div>
         </div>
