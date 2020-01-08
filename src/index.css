@@ -116,15 +116,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   padding-bottom: 8px;
   height: inherit;
 }
-.container-task {
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: white;
-  overflow-y: auto;
-  overflow-y: hidden;
-}
 
 .container-column {
   margin: 8px;
@@ -223,4 +214,30 @@ textarea.materialize-textarea:focus:not([readonly]) {
   width: 80% !important;
   margin-left: 15px !important;
   height: 25% !important;
+}
+
+
+.container-task:hover{
+  background-color: lightgrey;
+  cursor: pointer; 
+}
+
+.task-button{
+  display: none;
+}
+.container-task:hover  .task-button{
+  display: block;
+}
+.container-task {
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: white;
+  overflow-y: auto;
+  overflow-y: hidden;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
 }
