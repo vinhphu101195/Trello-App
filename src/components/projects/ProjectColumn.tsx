@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { ProjectTask } from "./ProjectTask";
-import { TabContext } from "../../contexts/TableContext";
+import { useColumnTask } from "../../columnProvider";
 
 interface Props {
   information?: any;
@@ -9,7 +9,7 @@ interface Props {
 export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const [keyOpen, setKeyOpen] = useState<boolean>(false);
   const [taskName, setTaskName] = useState<string>("");
-  const getDataContext: any = useContext(TabContext);
+  const getDataContext: any = useColumnTask();
 
   const title: string = props.information.id;
   const newData = { ...props.information };

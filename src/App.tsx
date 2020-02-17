@@ -4,7 +4,7 @@ import { SignIn } from "./components/auth/SignIn";
 import { SignUp } from "./components/auth/SignUp";
 import { Navbar } from "./components/navLink/Navbar";
 import { Dashboard } from "./components/dashboard/Dashboard";
-import TableContextProvider from "./contexts/TableContext";
+import TableContextProvider from "./columnProvider";
 
 function App() {
 

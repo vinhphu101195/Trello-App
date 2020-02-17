@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { ProjectColumn } from "../projects/ProjectColumn";
-import { TabContext } from "../../contexts/TableContext";
+import { useColumnTask } from "../../columnProvider";
 
 interface Props {}
 
 export const Dashboard: React.FC<Props> = () => {
-  const getDataContext: any = useContext(TabContext);
+  const getDataContext: any = useColumnTask();
   const [columnName, setColumnName] = useState<string>("");
   const [keyOpen, setKeyOpen] = useState<boolean>(false);
 
@@ -76,6 +76,7 @@ const ShowColumn = (props: any) => {
     return props.columns.map((element: object, index: number) => {
       return <ProjectColumn information={element} key={index}></ProjectColumn>;
     });
+  } else {
+    return <div></div>;
   }
-  else{return <div></div>}
 };

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer, useEffect } from "react";
+import React, { createContext, useState, useReducer, useEffect,useContext } from "react";
 import firebase from "../config/fbConfig";
 import { ProjectReducer } from "../store/reducers/ProjectReducer";
 
@@ -35,5 +35,9 @@ const TableContextProvider = (props: Props) => {
     </TabContext.Provider>
   );
 };
+
+export const useColumnTask = () =>{
+  return useContext(TabContext)
+}
 
 export default TableContextProvider;
