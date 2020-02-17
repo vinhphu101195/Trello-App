@@ -63,7 +63,6 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
               className="btn btn-color lighten-1 z-depth-0"
               onClick={onCreateTask}
             >
-              {" "}
               Add List
             </button>
             <div
@@ -72,7 +71,6 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
                 setKeyOpen(false);
               }}
             >
-              {" "}
               X
             </div>
           </div>

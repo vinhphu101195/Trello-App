@@ -1,13 +1,17 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  task: string;
+}
 
-export const TaskPopup: React.FC<Props> = () => {
+export const TaskPopup: React.FC<Props> = (props: Props) => {
+        console.log("task popup");
+        
   return (
     <div className="popup" id="popup">
       <div className="popup__content">
         <div className="popup__title">
-          <textarea className="popup__title__textarea">name of task</textarea>
+          <textarea className="popup__title__textarea" defaultValue= {props.task}></textarea>
         </div>
         <div className="popup__information">
           <p className="popup__information__name">Posted by Phu Chau</p>

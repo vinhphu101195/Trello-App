@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TaskPopup } from "./TaskPopup";
 
 interface Props {
@@ -6,24 +6,32 @@ interface Props {
 }
 
 export const ProjectTask: React.FC<Props> = (props: Props) => {
-  const editTask = (task: string) => {
-    if (task.length > 14) {
-      const newTask = task.slice(0, 14) + "...";
-      return newTask;
-    } else {
-      return task;
-    }
-  };
+  const [key, setKey] = useState(false);
 
   return (
     <div className="container-task">
       {editTask(props.task)}
-      <a href="#popup" className="project__a">
+      <a
+        href="#popup"
+        className="project__a"
+        onClick={() => {
+          setKey(true);
+        }}
+      >
         <div className="task-button">
           <button className="btn btn-color ">edit</button>
         </div>
       </a>
-      <TaskPopup></TaskPopup>
+      {key ? <TaskPopup task={props.task}></TaskPopup> : ""}
     </div>
   );
+};
+
+const editTask = (task: string) => {
+  if (task.length > 14) {
+    const newTask = task.slice(0, 14) + "...";
+    return newTask;
+  } else {
+    return task;
+  }
 };

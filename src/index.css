@@ -254,8 +254,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   left: 0;
 
   z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition: all 0.3s;
 }
 @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
