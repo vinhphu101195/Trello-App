@@ -1,4 +1,5 @@
 import React from "react";
+import { TaskPopup } from "./TaskPopup";
 
 interface Props {
   task: string;
@@ -17,9 +18,12 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
   return (
     <div className="container-task">
       {editTask(props.task)}
-      <div className="task-button">
-        <button className="btn btn-color ">edit</button>
-      </div>
+      <a href="#popup" className="project__a">
+        <div className="task-button">
+          <button className="btn btn-color ">edit</button>
+        </div>
+      </a>
+      <TaskPopup></TaskPopup>
     </div>
   );
 };
