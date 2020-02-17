@@ -78,15 +78,19 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="column-list">{showTask(tasks)}</div>
+      <div className="column-list">
+        <ShowTask tasks={tasks}></ShowTask>
+      </div>
     </div>
   );
 };
 
-const showTask = (tasks: any) => {
-  if (tasks.length > 0) {
-    return tasks.map((element: string, index: number) => {
+const ShowTask = (props: any) => {
+  if (props.tasks.length > 0) {
+    return props.tasks.map((element: string, index: number) => {
       return <ProjectTask task={element} key={index}></ProjectTask>;
     });
+  } else {
+    return <div></div>;
   }
 };

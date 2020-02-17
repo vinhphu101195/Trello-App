@@ -22,7 +22,7 @@ export const Dashboard: React.FC<Props> = () => {
   return (
     <div className="container-dashboard">
       <div className="container-sub-dashboard">
-        {showColumn(getDataContext.data)}
+        <ShowColumn columns={getDataContext.data}></ShowColumn>
         <div className="container-add-column">
           <h5
             className="column-add-title"
@@ -71,10 +71,11 @@ export const Dashboard: React.FC<Props> = () => {
   );
 };
 
-const showColumn = (columns: any) => {
-  if (columns.length > 0) {
-    return columns.map((element: object, index: number) => {
+const ShowColumn = (props: any) => {
+  if (props.columns.length > 0) {
+    return props.columns.map((element: object, index: number) => {
       return <ProjectColumn information={element} key={index}></ProjectColumn>;
     });
   }
+  else{return <div></div>}
 };
