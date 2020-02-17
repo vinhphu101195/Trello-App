@@ -6,8 +6,8 @@ interface Props {
 
 export const ProjectTask: React.FC<Props> = (props: Props) => {
   const editTask = (task: string) => {
-    if (task.length > 12) {
-      const newTask = task.slice(0, 12) + "...";
+    if (task.length > 14) {
+      const newTask = task.slice(0, 14) + "...";
       return newTask;
     } else {
       return task;

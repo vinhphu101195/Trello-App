@@ -11,6 +11,7 @@ export const TabContext = createContext<object>({});
 const TableContextProvider = (props: Props) => {
   const [initialState, setInitialState] = useState<object>({});
 
+  // check again with data, anschyronous
   const [data, dispatch] = useReducer<any>(ProjectReducer, initialState);
 
   useEffect(() => {
@@ -22,6 +23,8 @@ const TableContextProvider = (props: Props) => {
           id: doc.id,
           ...doc.data()
         }));
+        console.log(newTask);
+        
         setInitialState(newTask);
       });
   }, []);
