@@ -2,16 +2,18 @@ import React from "react";
 
 interface Props {
   task: string;
+  onSetKey: any;
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
-        console.log("task popup");
-        
   return (
     <div className="popup" id="popup">
       <div className="popup__content">
         <div className="popup__title">
-          <textarea className="popup__title__textarea" defaultValue= {props.task}></textarea>
+          <textarea
+            className="popup__title__textarea"
+            defaultValue={props.task}
+          ></textarea>
         </div>
         <div className="popup__information">
           <p className="popup__information__name">Posted by Phu Chau</p>
@@ -25,9 +27,9 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
             Save
           </button>
         </div>
-        <a href="" className="popup__close">
+        <div className="popup__close" onClick={() => props.onSetKey()}>
           &times;
-        </a>
+        </div>
       </div>
     </div>
   );

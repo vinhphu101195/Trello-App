@@ -8,6 +8,10 @@ interface Props {
 export const ProjectTask: React.FC<Props> = (props: Props) => {
   const [key, setKey] = useState(false);
 
+  const onSetKey = () => {
+    setKey(false);
+  };
+
   return (
     <div className="container-task">
       {editTask(props.task)}
@@ -22,7 +26,16 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
           <button className="btn btn-color ">edit</button>
         </div>
       </a>
-      {key ? <TaskPopup task={props.task}></TaskPopup> : ""}
+      {key ? (
+        <TaskPopup
+          task={props.task}
+          onSetKey={() => {
+            onSetKey();
+          }}
+        ></TaskPopup>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

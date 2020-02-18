@@ -272,8 +272,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
-.popup__close:link,
-.popup__close:visited {
+.popup__close {
   color: #777;
   position: absolute;
   top: 2.5rem;
@@ -319,25 +318,25 @@ textarea.materialize-textarea:focus:not([readonly]) {
   padding: 1rem;
 }
 
-.popup__information{
+.popup__information {
   font-size: 1.4rem;
 }
-.popup__information__name{
+.popup__information__name {
   color: #00c3ff;
   font-weight: 700;
   margin-bottom: -0.5em;
 }
-.popup__button{
+.popup__button {
   margin-top: 3rem;
   float: right;
 }
-.popup__btn__item{
+.popup__btn__item {
   width: 7rem;
   margin-right: 6px;
   transition: all 0s;
   float: right;
 }
 
-.popup__btn__item:hover{
+.popup__btn__item:hover {
   transform: scaleY(1.2);
 }
