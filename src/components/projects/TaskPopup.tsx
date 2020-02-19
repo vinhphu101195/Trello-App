@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 interface Props {
   task: string;
@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
+
   return (
     <div className="popup" id="popup">
       <div className="popup__content">

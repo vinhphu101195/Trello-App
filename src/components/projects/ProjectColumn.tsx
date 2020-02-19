@@ -15,7 +15,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const newData = { ...props.information };
   delete newData.id;
   const tasks = Object.values(newData);
-  const numberOfTasks: any = tasks.length;
+  const numberOfTask = Object.keys(newData);
 
   const onCreateTask = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
       type: "ADD_TASK",
       tableName: title,
       taskNameData: {
-        [numberOfTasks]: taskName
+        [createID(numberOfTask)]: taskName
       }
     });
     setTaskName("");
@@ -90,5 +90,13 @@ const ShowTask = (props: any) => {
     });
   } else {
     return <div></div>;
+  }
+};
+
+const createID = (numberOfTask: Array<string>) => {
+  if (numberOfTask.length === 0) {
+    return 0;
+  } else {
+    return Number(numberOfTask[numberOfTask.length - 1]) + 1;
   }
 };
