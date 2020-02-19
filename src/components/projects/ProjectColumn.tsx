@@ -14,8 +14,11 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const title: string = props.information.id;
   const newData = { ...props.information };
   delete newData.id;
+  
   const tasks = Object.values(newData);
   const numberOfTask = Object.keys(newData);
+  console.log(numberOfTask);
+  
 
   const onCreateTask = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -77,7 +80,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
         </div>
       </div>
       <div className="column-list">
-        <ShowTask tasks={tasks}></ShowTask>
+        <ShowTask tasks={tasks} numberOfTask={numberOfTask} title = {title}></ShowTask>
       </div>
     </div>
   );
@@ -86,7 +89,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
 const ShowTask = (props: any) => {
   if (props.tasks.length > 0) {
     return props.tasks.map((element: string, index: number) => {
-      return <ProjectTask task={element} key={index}></ProjectTask>;
+      return <ProjectTask task={element} key={index} title={ props.title} id = {props.numberOfTask[index]}></ProjectTask>;
     });
   } else {
     return <div></div>;

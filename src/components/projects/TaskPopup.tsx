@@ -1,19 +1,22 @@
 import React,{useState} from "react";
 
 interface Props {
-  task: string;
+  infor: any;
   onSetKey: any;
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
+  console.log(props);
+  const [taskName, setTaskName] = useState<string>("");
 
+  
   return (
     <div className="popup" id="popup">
       <div className="popup__content">
         <div className="popup__title">
           <textarea
             className="popup__title__textarea"
-            defaultValue={props.task}
+            defaultValue={props.infor.task}
           ></textarea>
         </div>
         <div className="popup__information">

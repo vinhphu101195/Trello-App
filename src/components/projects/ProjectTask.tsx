@@ -3,6 +3,8 @@ import { TaskPopup } from "./TaskPopup";
 
 interface Props {
   task: string;
+  title: string;
+  id: string;
 }
 
 export const ProjectTask: React.FC<Props> = (props: Props) => {
@@ -28,7 +30,7 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
       </a>
       {key ? (
         <TaskPopup
-          task={props.task}
+          infor={props}
           onSetKey={() => {
             onSetKey();
           }}
