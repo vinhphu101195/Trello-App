@@ -24,6 +24,28 @@ export const ProjectReducer = (state: object[], action: any) => {
         console.log(error);
       }
       return [state];
+    case "EDIT_TASK":
+      try {
+        firebase
+          .firestore()
+          .collection("project")
+          .doc(action.tableName)
+          .update(action.taskNameData);
+      } catch (error) {
+        console.log(error);
+      }
+      return [state];
+    case "REMOVE_TASK":
+      try {
+        firebase
+          .firestore()
+          .collection("project")
+          .doc(action.tableName)
+          .update({ [action.taskID]: firebase.firestore.FieldValue.delete() });
+      } catch (error) {
+        console.log(error);
+      }
+      return [state];
     default:
       return state;
   }
