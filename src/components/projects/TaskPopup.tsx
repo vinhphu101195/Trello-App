@@ -8,11 +8,11 @@ interface Props {
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
-  console.log(props);
   const [taskName, setTaskName] = useState<string>(props.infor.task);
   const getDataContext: any = useColumnTask();
 
   const onDeleteTask = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (ConfirmDelete()) {
       getDataContext.dispatch({
         type: "REMOVE_TASK",
