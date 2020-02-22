@@ -13,6 +13,17 @@ export const ProjectReducer = (state: object[], action: any) => {
         console.log(error);
       }
       return [state];
+    case "REMOVE_COLUMN":
+      try {
+        firebase
+          .firestore()
+          .collection("project")
+          .doc(action.tableName)
+          .delete();
+      } catch (error) {
+        console.log(error);
+      }
+      return [state];
     case "ADD_TASK":
       try {
         firebase

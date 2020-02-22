@@ -32,6 +32,17 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
     setKeyOpen(false);
   };
 
+  const onDeleteColumn = (e: React.FormEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    if (ConfirmDelete()) {
+      getDataContext.dispatch({
+        type: "REMOVE_COLUMN",
+        tableName: title
+      });
+    }
+    setKeyDropDown(false);
+  };
+
   return (
     <div className="container-column">
       <div className="column-header">
@@ -57,7 +68,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
           >
             Add More Task
           </li>
-          <li>Remove Column</li>
+          <li onClick={onDeleteColumn}>Remove Column</li>
         </ul>
         <div
           className={
@@ -125,4 +136,10 @@ const createID = (numberOfTask: Array<string>) => {
   } else {
     return Number(numberOfTask[numberOfTask.length - 1]) + 1;
   }
+};
+
+const ConfirmDelete = () => {
+  var x = window.confirm("Are you sure you want to delete?");
+  if (x) return true;
+  else return false;
 };
