@@ -167,7 +167,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   top: 11px;
   right: 20px;
   font-size: 30px;
-  z-index: 99999;
+  z-index: 9;
 }
 .dropdown-content5 {
   display: none;

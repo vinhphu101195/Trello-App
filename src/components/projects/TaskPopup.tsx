@@ -48,7 +48,7 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
         </div>
         <div className="popup__information">
           <p className="popup__information__name">Posted by Phu Chau</p>
-          <p className="grey-text">04/08/2019</p>
+          <p className="grey-text">New update at 04/08/2019</p>
         </div>
         <div className="popup__button">
           <button
