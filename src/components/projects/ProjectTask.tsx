@@ -17,8 +17,7 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
   return (
     <div className="container-task">
       {editTask(props.task)}
-      <a
-        href="#popup"
+      <div
         className="project__a"
         onClick={() => {
           setKey(true);
@@ -27,7 +26,7 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
         <div className="task-button">
           <button className="btn btn-color ">edit</button>
         </div>
-      </a>
+      </div>
       {key ? (
         <TaskPopup
           infor={props}

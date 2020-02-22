@@ -10,15 +10,14 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
   const [keyOpen, setKeyOpen] = useState<boolean>(false);
   const [taskName, setTaskName] = useState<string>("");
   const getDataContext: any = useColumnTask();
+  const [keyDropDown, setKeyDropDown] = useState<boolean>(false);
 
   const title: string = props.information.id;
   const newData = { ...props.information };
   delete newData.id;
-  
+
   const tasks = Object.values(newData);
   const numberOfTask = Object.keys(newData);
-  console.log(numberOfTask);
-  
 
   const onCreateTask = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -40,13 +39,26 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
         <div
           className="column-header-addTask"
           onClick={() => {
-            setKeyOpen(true);
+            setKeyDropDown(!keyDropDown);
           }}
         >
-          +
+          ...
         </div>
-        <span className="tooltiptext">Add more task</span>
-
+        <ul
+          className={
+            keyDropDown ? "dropdown-content5 show" : "dropdown-content5"
+          }
+        >
+          <li
+            onClick={() => {
+              setKeyDropDown(false);
+              setKeyOpen(true);
+            }}
+          >
+            Add More Task
+          </li>
+          <li>Remove Column</li>
+        </ul>
         <div
           className={
             keyOpen ? "add-column-control-open" : "add-column-control-close"
@@ -80,7 +92,11 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
         </div>
       </div>
       <div className="column-list">
-        <ShowTask tasks={tasks} numberOfTask={numberOfTask} title = {title}></ShowTask>
+        <ShowTask
+          tasks={tasks}
+          numberOfTask={numberOfTask}
+          title={title}
+        ></ShowTask>
       </div>
     </div>
   );
@@ -89,7 +105,14 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
 const ShowTask = (props: any) => {
   if (props.tasks.length > 0) {
     return props.tasks.map((element: string, index: number) => {
-      return <ProjectTask task={element} key={index} title={ props.title} id = {props.numberOfTask[index]}></ProjectTask>;
+      return (
+        <ProjectTask
+          task={element}
+          key={index}
+          title={props.title}
+          id={props.numberOfTask[index]}
+        ></ProjectTask>
+      );
     });
   } else {
     return <div></div>;

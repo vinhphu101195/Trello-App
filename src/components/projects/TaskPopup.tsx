@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useColumnTask } from "../../columnProvider";
-import firebase from "../../config/fbConfig";
 
 interface Props {
   infor: any;
