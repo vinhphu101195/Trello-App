@@ -5,6 +5,8 @@ import { SignUp } from "./components/auth/SignUp";
 import { Navbar } from "./components/navLink/Navbar";
 import { Dashboard } from "./components/dashboard/Dashboard";
 import TableContextProvider from "./columnProvider";
+import { DragDropContext } from "react-beautiful-dnd";
+
 
 function App() {
 
