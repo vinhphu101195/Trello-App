@@ -349,3 +349,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .popup__btn__item:hover {
   transform: scaleY(1.2);
 }
+
+.beActive{
+  background-color: lightskyblue;
+}

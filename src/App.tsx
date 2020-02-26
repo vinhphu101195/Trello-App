@@ -7,29 +7,35 @@ import { Dashboard } from "./components/dashboard/Dashboard";
 import TableContextProvider from "./columnProvider";
 import { DragDropContext } from "react-beautiful-dnd";
 
-
 function App() {
 
+  const onDragEnd = (result:any) =>{
+    return result;
+  }
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar></Navbar>
-        <Switch>
-          <Route
-            path="/signin"
-            component={SignIn}
-          ></Route>
-          <Route path="/signup" component={SignUp} />
-          <Route exact path="/"   render={() => {
-              return (
-                <TableContextProvider>
-                  <Dashboard></Dashboard>
-                </TableContextProvider>
-              );
-            }} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar></Navbar>
+          <Switch>
+            <Route path="/signin" component={SignIn}></Route>
+            <Route path="/signup" component={SignUp} />
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return (
+                  <TableContextProvider>
+                    <Dashboard></Dashboard>
+                  </TableContextProvider>
+                );
+              }}
+            />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </DragDropContext>
   );
 }
 

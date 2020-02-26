@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ProjectTask } from "./ProjectTask";
 import { useColumnTask } from "../../columnProvider";
+import { Droppable } from "react-beautiful-dnd";
 
 interface Props {
   information?: any;
@@ -102,13 +103,17 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="column-list">
-        <ShowTask
-          tasks={tasks}
-          numberOfTask={numberOfTask}
-          title={title}
-        ></ShowTask>
-      </div>
+      <Droppable droppableId={title}>
+        {(provided, snapshot) => (
+          <div className="column-list" ref={provided.innerRef} {...provided.droppableProps}>
+            <ShowTask
+              tasks={tasks}
+              numberOfTask={numberOfTask}
+              title={title}
+            ></ShowTask>
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 };
@@ -122,6 +127,7 @@ const ShowTask = (props: any) => {
           key={index}
           title={props.title}
           id={props.numberOfTask[index]}
+          index={index}
         ></ProjectTask>
       );
     });
