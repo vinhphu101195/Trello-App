@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useColumnTask } from "../../columnProvider";
+import moment from "moment";
+
 
 interface Props {
   infor: any;
@@ -7,6 +9,8 @@ interface Props {
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
+  console.log( props);
+  
   const [taskName, setTaskName] = useState<string>(props.infor.task);
   const getDataContext: any = useColumnTask();
 
@@ -28,7 +32,11 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
       type: "EDIT_TASK",
       tableName: props.infor.title,
       taskNameData: {
-        [props.infor.id]: taskName
+        [props.infor.id]: {
+          "titleTask":taskName,
+          "date": new Date(),
+          "author": "PC"
+        }
       }
     });
     props.onSetKey();
@@ -40,15 +48,15 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
         <div className="popup__title">
           <textarea
             className="popup__title__textarea"
-            defaultValue={props.infor.task}
+            defaultValue={props.infor.task.titleTask}
             onChange={(e: React.FormEvent<HTMLTextAreaElement>) => {
               setTaskName(e.currentTarget.value);
             }}
           ></textarea>
         </div>
         <div className="popup__information">
-          <p className="popup__information__name">Posted by Phu Chau</p>
-          <p className="grey-text">New update at 04/08/2019</p>
+          <p className="popup__information__name">Posted by {props.infor.task.author}</p>
+          <p className="grey-text">New update in {moment(props.infor.task.date.toDate()).calendar()}</p>
         </div>
         <div className="popup__button">
           <button

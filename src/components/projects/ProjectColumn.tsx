@@ -26,7 +26,11 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
       type: "ADD_TASK",
       tableName: title,
       taskNameData: {
-        [createID(numberOfTask)]: taskName
+        [createID(numberOfTask)]: {
+          "titleTask":taskName,
+          "date": new Date(),
+          "author": "PC"
+        }
       }
     });
     setTaskName("");
@@ -95,6 +99,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
             <div
               className="list-add-control-cancel"
               onClick={() => {
+                setTaskName("");
                 setKeyOpen(false);
               }}
             >

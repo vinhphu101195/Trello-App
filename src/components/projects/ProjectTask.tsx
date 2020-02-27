@@ -3,7 +3,7 @@ import { TaskPopup } from "./TaskPopup";
 import { Draggable } from "react-beautiful-dnd";
 
 interface Props {
-  task: string;
+  task: any;
   title: string;
   id: string;
   index: number;
@@ -26,7 +26,7 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
           {...provided.dragHandleProps}
           
         >
-          {editTask(props.task)}
+          {editTask(props.task.titleTask)}
           <div
             className="project__a"
             onClick={() => {
