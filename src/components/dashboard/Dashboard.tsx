@@ -51,7 +51,6 @@ export const Dashboard: React.FC<Props> = () => {
                 className="btn btn-color lighten-1 z-depth-0"
                 onClick={onCreateColumn}
               >
-                {" "}
                 Add List
               </button>
               <div

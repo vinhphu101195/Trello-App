@@ -26,10 +26,10 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
       type: "ADD_TASK",
       tableName: title,
       taskNameData: {
-        [createID(numberOfTask)]: {
-          "titleTask":taskName,
-          "date": new Date(),
-          "author": "PC"
+        [createID(title)]: {
+          titleTask: taskName,
+          date: new Date(),
+          author: "PC"
         }
       }
     });
@@ -110,7 +110,11 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
       </div>
       <Droppable droppableId={title}>
         {(provided, snapshot) => (
-          <div className="column-list" ref={provided.innerRef} {...provided.droppableProps}>
+          <div
+            className="column-list"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
             <ShowTask
               tasks={tasks}
               numberOfTask={numberOfTask}
@@ -141,12 +145,8 @@ const ShowTask = (props: any) => {
   }
 };
 
-const createID = (numberOfTask: Array<string>) => {
-  if (numberOfTask.length === 0) {
-    return 0;
-  } else {
-    return Number(numberOfTask[numberOfTask.length - 1]) + 1;
-  }
+const createID = (title: string): string => {
+  return `${title}-${new Date().getTime()}`;
 };
 
 const ConfirmDelete = () => {

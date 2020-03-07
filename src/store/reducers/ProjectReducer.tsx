@@ -57,6 +57,14 @@ export const ProjectReducer = (state: object[], action: any) => {
         console.log(error);
       }
       return [state];
+    case "DRAG_HAPPENED":
+      
+      return state
+      
+      // same column
+/*       if(dropableIdStart === dropableIdEnd){
+        const list = state.find(list => dropableIdStart ===)
+      } */
     default:
       return state;
   }

@@ -8,10 +8,18 @@ import TableContextProvider from "./columnProvider";
 import { DragDropContext } from "react-beautiful-dnd";
 
 function App() {
-
-  const onDragEnd = (result:any) =>{
-    return result;
-  }
+  const onDragEnd = (result: any) => {
+    const { destination, source, draggbleId } = result;
+    if(!destination){
+      return
+    }
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
