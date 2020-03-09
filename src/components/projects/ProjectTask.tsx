@@ -15,6 +15,8 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
   const onSetKey = () => {
     setKey(false);
   };
+  console.log((props.id));
+  
 
   return (
     <Draggable draggableId={props.id} index={props.index}>

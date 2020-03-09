@@ -133,7 +133,7 @@ const ShowTask = (props: any) => {
       return (
         <ProjectTask
           task={element}
-          key={index}
+          key={props.numberOfTask[index]}
           title={props.title}
           id={props.numberOfTask[index]}
           index={index}

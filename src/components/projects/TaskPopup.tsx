@@ -11,7 +11,7 @@ interface Props {
 export const TaskPopup: React.FC<Props> = (props: Props) => {
   console.log( props);
   
-  const [taskName, setTaskName] = useState<string>(props.infor.task);
+  const [taskName, setTaskName] = useState<string>(props.infor.task.titleTask);
   const getDataContext: any = useColumnTask();
 
   const onDeleteTask = (e: React.FormEvent<HTMLButtonElement>) => {
