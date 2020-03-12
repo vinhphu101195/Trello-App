@@ -353,3 +353,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .beActive{
   background-color: lightskyblue;
 }
+.input-table{
+  color:#fff;
+}

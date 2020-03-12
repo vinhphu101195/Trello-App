@@ -15,18 +15,17 @@ export const ProjectTask: React.FC<Props> = (props: Props) => {
   const onSetKey = () => {
     setKey(false);
   };
-  console.log((props.id));
-  
 
   return (
     <Draggable draggableId={props.id} index={props.index}>
       {(provided, snapshot) => (
         <div
-          className= {snapshot.isDragging? "container-task beActive" : "container-task"}  
+          className={
+            snapshot.isDragging ? "container-task beActive" : "container-task"
+          }
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          
         >
           {editTask(props.task.titleTask)}
           <div

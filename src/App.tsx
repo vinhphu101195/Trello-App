@@ -9,8 +9,9 @@ import { useColumnTask } from "./columnProvider/index";
 
 function App() {
   const getDataContext: any = useColumnTask();
+
   const onDragEnd = (result: any) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
     if (!destination) {
       return;
     }
@@ -20,67 +21,66 @@ function App() {
     ) {
       return;
     }
-    const start = source.droppableId;
-    const finish = destination.droppableId;
-    const arrayOfTask = getDataContext.data.find(
-      (ele: any) => ele.id === start
-    );
-    const variableStart =
-      arrayOfTask[Object.keys(arrayOfTask)[source.index + 1]].titleTask;
-    //same column
-    if (start === finish) {
-      const variableEnd =
-        arrayOfTask[Object.keys(arrayOfTask)[destination.index + 1]].titleTask;
-      getDataContext.dispatch({
-        type: "EDIT_TASK",
-        tableName: finish,
-        taskNameData: {
-          [draggableId]: {
-            titleTask: variableEnd,
-            date: new Date(),
-            author: "PC"
-          }
-        }
-      });
-      getDataContext.dispatch({
-        type: "EDIT_TASK",
-        tableName: finish,
-        taskNameData: {
-          [Object.keys(arrayOfTask)[destination.index + 1]]: {
-            titleTask: variableStart,
-            date: new Date(),
-            author: "PC"
-          }
-        }
-      });
+    console.log(type);
+    if (type === "list") {
       return;
-    }
+    } else {
+      const start = source.droppableId;
+      const finish = destination.droppableId;
+      const arrayOfTask = getDataContext.data.find(
+        (ele: any) => ele.id === start
+      );
+      const variableStart =
+        arrayOfTask[Object.keys(arrayOfTask)[source.index + 1]].titleTask;
+      if (start === finish) {
+        const variableEnd =
+          arrayOfTask[Object.keys(arrayOfTask)[destination.index + 1]]
+            .titleTask;
+        getDataContext.dispatch({
+          type: "EDIT_TASK",
+          tableName: finish,
+          taskNameData: {
+            [draggableId]: {
+              titleTask: variableEnd,
+              date: new Date(),
+              author: "PC"
+            }
+          }
+        });
+        getDataContext.dispatch({
+          type: "EDIT_TASK",
+          tableName: finish,
+          taskNameData: {
+            [Object.keys(arrayOfTask)[destination.index + 1]]: {
+              titleTask: variableStart,
+              date: new Date(),
+              author: "PC"
+            }
+          }
+        });
+        return;
+      } else {
+        // different column
+        getDataContext.dispatch({
+          type: "REMOVE_TASK",
+          tableName: start,
+          taskID: draggableId
+        });
 
-    // different column
-    getDataContext.dispatch({
-      type: "REMOVE_TASK",
-      tableName: start,
-      taskID: draggableId
-    });
-
-    getDataContext.dispatch({
-      type: "ADD_TASK",
-      tableName: finish,
-/*       taskNameData: {
-        [`${finish}-${new Date().getTime()}`]: {
-          titleTask: variableStart,
-          date: new Date(),
-          author: "PC"
-        }
-      } */
-      taskNameData: {
-        [draggableId]: {
-          titleTask: variableStart,
-          date: new Date(),
-          author: "PC"
-        }
+        getDataContext.dispatch({
+          type: "ADD_TASK",
+          tableName: finish,
+          taskNameData: {
+            [draggableId]: {
+              titleTask: variableStart,
+              date: new Date(),
+              author: "PC"
+            }
+          }
+        });
       }
-    });
+    }
+    //same column
   };
 
   return (

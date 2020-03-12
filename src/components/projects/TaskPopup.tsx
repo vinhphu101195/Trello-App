@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { useColumnTask } from "../../columnProvider";
 import moment from "moment";
 
-
 interface Props {
   infor: any;
   onSetKey: any;
 }
 
 export const TaskPopup: React.FC<Props> = (props: Props) => {
-  console.log( props);
-  
   const [taskName, setTaskName] = useState<string>(props.infor.task.titleTask);
   const getDataContext: any = useColumnTask();
 
@@ -33,9 +30,9 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
       tableName: props.infor.title,
       taskNameData: {
         [props.infor.id]: {
-          "titleTask":taskName,
-          "date": new Date(),
-          "author": "PC"
+          titleTask: taskName,
+          date: new Date(),
+          author: "PC"
         }
       }
     });
@@ -55,8 +52,12 @@ export const TaskPopup: React.FC<Props> = (props: Props) => {
           ></textarea>
         </div>
         <div className="popup__information">
-          <p className="popup__information__name">Posted by {props.infor.task.author}</p>
-          <p className="grey-text">New update in {moment(props.infor.task.date.toDate()).calendar()}</p>
+          <p className="popup__information__name">
+            Posted by {props.infor.task.author}
+          </p>
+          <p className="grey-text">
+            New update in {moment(props.infor.task.date.toDate()).calendar()}
+          </p>
         </div>
         <div className="popup__button">
           <button

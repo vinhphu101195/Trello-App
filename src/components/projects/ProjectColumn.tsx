@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ProjectTask } from "./ProjectTask";
 import { useColumnTask } from "../../columnProvider";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable,Draggable } from "react-beautiful-dnd";
 
 interface Props {
   information?: any;
+  index:number
 }
 
 export const ProjectColumn: React.FC<Props> = (props: Props) => {
@@ -49,81 +50,90 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className="container-column">
-      <div className="column-header">
-        <h5 className="column-title">{title}</h5>
+    <Draggable draggableId={title} index={props.index}>
+      {(provided, snapshot) => (
         <div
-          className="column-header-addTask"
-          onClick={() => {
-            setKeyDropDown(!keyDropDown);
-          }}
+          className="container-column"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
         >
-          ...
-        </div>
-        <ul
-          className={
-            keyDropDown ? "dropdown-content5 show" : "dropdown-content5"
-          }
-        >
-          <li
-            onClick={() => {
-              setKeyDropDown(false);
-              setKeyOpen(true);
-            }}
-          >
-            Add More Task
-          </li>
-          <li onClick={onDeleteColumn}>Remove Column</li>
-        </ul>
-        <div
-          className={
-            keyOpen ? "add-column-control-open" : "add-column-control-close"
-          }
-        >
-          <input
-            className="list-name-input"
-            type="text"
-            placeholder="Enter task..."
-            value={taskName}
-            onChange={(e: React.FormEvent<HTMLInputElement>) => {
-              setTaskName(e.currentTarget.value);
-            }}
-          ></input>
-          <div className="list-add-control row">
-            <button
-              className="btn btn-color lighten-1 z-depth-0"
-              onClick={onCreateTask}
-            >
-              Add List
-            </button>
+          <div className="column-header">
+            <h5 className="column-title">{title}</h5>
             <div
-              className="list-add-control-cancel"
+              className="column-header-addTask"
               onClick={() => {
-                setTaskName("");
-                setKeyOpen(false);
+                setKeyDropDown(!keyDropDown);
               }}
             >
-              X
+              ...
+            </div>
+            <ul
+              className={
+                keyDropDown ? "dropdown-content5 show" : "dropdown-content5"
+              }
+            >
+              <li
+                onClick={() => {
+                  setKeyDropDown(false);
+                  setKeyOpen(true);
+                }}
+              >
+                Add More Task
+              </li>
+              <li onClick={onDeleteColumn}>Remove Column</li>
+            </ul>
+            <div
+              className={
+                keyOpen ? "add-column-control-open" : "add-column-control-close"
+              }
+            >
+              <input
+                className="list-name-input"
+                type="text"
+                placeholder="Enter task..."
+                value={taskName}
+                onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                  setTaskName(e.currentTarget.value);
+                }}
+              ></input>
+              <div className="list-add-control row">
+                <button
+                  className="btn btn-color lighten-1 z-depth-0"
+                  onClick={onCreateTask}
+                >
+                  Add List
+                </button>
+                <div
+                  className="list-add-control-cancel"
+                  onClick={() => {
+                    setKeyOpen(false);
+                    setTaskName("");
+                  }}
+                >
+                  X
+                </div>
+              </div>
             </div>
           </div>
+          <Droppable droppableId={title}>
+            {(provided, snapshot) => (
+              <div
+                className="column-list"
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                <ShowTask
+                  tasks={tasks}
+                  numberOfTask={numberOfTask}
+                  title={title}
+                ></ShowTask>
+              </div>
+            )}
+          </Droppable>
         </div>
-      </div>
-      <Droppable droppableId={title}>
-        {(provided, snapshot) => (
-          <div
-            className="column-list"
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            <ShowTask
-              tasks={tasks}
-              numberOfTask={numberOfTask}
-              title={title}
-            ></ShowTask>
-          </div>
-        )}
-      </Droppable>
-    </div>
+      )}
+    </Draggable>
   );
 };
 
