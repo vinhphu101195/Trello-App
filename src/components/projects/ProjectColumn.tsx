@@ -16,6 +16,7 @@ export const ProjectColumn: React.FC<Props> = (props: Props) => {
 
   const title: string = props.information.id;
   const newData = { ...props.information };
+  delete newData.oder;
   delete newData.id;
 
   const tasks = Object.values(newData);

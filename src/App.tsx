@@ -23,11 +23,20 @@ function App() {
     }
 
     if (type === "list") {
-      const arrayOfTask = getDataContext.data[destination.index];
+      const columnDestination = getDataContext.data[destination.index];
+      const columnStart = getDataContext.data[source.index];
 
-      getDataContext.data[destination.index] =
-        getDataContext.data[source.index];
-      getDataContext.data[source.index] = arrayOfTask;
+      //working with firebase
+      getDataContext.dispatch({
+        type: "EDIT_TASK",
+        tableName: columnStart.id,
+        taskNameData: { oder: destination.index }
+      });
+      getDataContext.dispatch({
+        type: "EDIT_TASK",
+        tableName: columnDestination.id,
+        taskNameData: { oder: source.index }
+      });
 
       return;
     } else {
@@ -36,8 +45,10 @@ function App() {
       const arrayOfTask = getDataContext.data.find(
         (ele: any) => ele.id === start
       );
+      delete arrayOfTask.oder;
       const variableStart =
         arrayOfTask[Object.keys(arrayOfTask)[source.index + 1]].titleTask;
+
       if (start === finish) {
         const variableEnd =
           arrayOfTask[Object.keys(arrayOfTask)[destination.index + 1]]
@@ -84,6 +95,7 @@ function App() {
             }
           }
         });
+        return;
       }
     }
   };

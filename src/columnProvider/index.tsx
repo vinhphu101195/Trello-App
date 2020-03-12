@@ -24,6 +24,7 @@ const TableContextProvider = (props: Props) => {
     firebase
       .firestore()
       .collection("project")
+      .orderBy("oder")
       .onSnapshot(snapshot => {
         const newTask: any = snapshot.docs.map(doc => ({
           id: doc.id,

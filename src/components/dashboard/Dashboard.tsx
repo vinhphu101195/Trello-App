@@ -14,7 +14,8 @@ export const Dashboard: React.FC<Props> = () => {
     e.preventDefault();
     getDataContext.dispatch({
       type: "ADD_COLUMN",
-      tableName: columnName
+      tableName: columnName,
+      oder: { oder: getDataContext.data.length }
     });
     setColumnName("");
     setKeyOpen(false);

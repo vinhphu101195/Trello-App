@@ -8,7 +8,7 @@ export const ProjectReducer = (state: object[], action: any) => {
           .firestore()
           .collection("project")
           .doc(action.tableName)
-          .set({});
+          .set(action.oder);
       } catch (error) {
         console.log(error);
       }
@@ -60,11 +60,6 @@ export const ProjectReducer = (state: object[], action: any) => {
     case "DRAG_HAPPENED":
       
       return state
-      
-      // same column
-/*       if(dropableIdStart === dropableIdEnd){
-        const list = state.find(list => dropableIdStart ===)
-      } */
     default:
       return state;
   }
