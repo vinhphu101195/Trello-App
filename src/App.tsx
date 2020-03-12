@@ -21,8 +21,14 @@ function App() {
     ) {
       return;
     }
-    console.log(type);
+
     if (type === "list") {
+      const arrayOfTask = getDataContext.data[destination.index];
+
+      getDataContext.data[destination.index] =
+        getDataContext.data[source.index];
+      getDataContext.data[source.index] = arrayOfTask;
+
       return;
     } else {
       const start = source.droppableId;
@@ -80,7 +86,6 @@ function App() {
         });
       }
     }
-    //same column
   };
 
   return (

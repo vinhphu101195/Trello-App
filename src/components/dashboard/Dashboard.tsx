@@ -86,7 +86,13 @@ export const Dashboard: React.FC<Props> = () => {
 const ShowColumn = (props: any) => {
   if (props.columns.length > 0) {
     return props.columns.map((element: object, index: number) => {
-      return <ProjectColumn information={element} key={index} index={index}></ProjectColumn>;
+      return (
+        <ProjectColumn
+          information={element}
+          key={props.columns[index].id}
+          index={index}
+        ></ProjectColumn>
+      );
     });
   } else {
     return <div></div>;
