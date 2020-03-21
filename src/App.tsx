@@ -49,54 +49,17 @@ function App() {
       const variableStart =
         arrayOfTask[Object.keys(arrayOfTask)[source.index + 1]].titleTask;
 
-      if (start === finish) {
-        const variableEnd =
-          arrayOfTask[Object.keys(arrayOfTask)[destination.index + 1]]
-            .titleTask;
-        getDataContext.dispatch({
-          type: "EDIT_TASK",
-          tableName: finish,
-          taskNameData: {
-            [draggableId]: {
-              titleTask: variableEnd,
-              date: new Date(),
-              author: "PC"
-            }
-          }
-        });
-        getDataContext.dispatch({
-          type: "EDIT_TASK",
-          tableName: finish,
-          taskNameData: {
-            [Object.keys(arrayOfTask)[destination.index + 1]]: {
-              titleTask: variableStart,
-              date: new Date(),
-              author: "PC"
-            }
-          }
-        });
-        return;
-      } else {
-        // different column
-        getDataContext.dispatch({
-          type: "REMOVE_TASK",
-          tableName: start,
-          taskID: draggableId
-        });
+      getDataContext.dispatch({
+        type: "DRAG_HAPPENED_IN_COLUMN",
+        arrayOfTask,
+        destination,
+        start,
+        finish,
+        draggableId,
+        variableStart
+      });
 
-        getDataContext.dispatch({
-          type: "ADD_TASK",
-          tableName: finish,
-          taskNameData: {
-            [draggableId]: {
-              titleTask: variableStart,
-              date: new Date(),
-              author: "PC"
-            }
-          }
-        });
-        return;
-      }
+      return;
     }
   };
 
