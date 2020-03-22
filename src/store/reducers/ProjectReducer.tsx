@@ -125,6 +125,14 @@ export const ProjectReducer = (state: object, action: any) => {
         .catch(err => console.log(err));
       return state;
 
+    case "SinOut":
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          console.log("sign out success");
+        });
+      return state;
     default:
       return state;
   }
