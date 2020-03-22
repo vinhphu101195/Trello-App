@@ -1,6 +1,6 @@
 import firebase from "../../config/fbConfig";
 
-export const ProjectReducer = (state: object[], action: any) => {
+export const ProjectReducer = (state: object, action: any) => {
   switch (action.type) {
     case "ADD_COLUMN":
       try {
@@ -116,8 +116,15 @@ export const ProjectReducer = (state: object[], action: any) => {
           console.log(error);
         }
       }
-
       return state;
+    case "SinIn":
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(action.email, action.password)
+        .then(() => console.log("sign in success"))
+        .catch(err => console.log(err));
+      return state;
+
     default:
       return state;
   }

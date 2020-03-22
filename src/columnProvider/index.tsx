@@ -6,6 +6,7 @@ import React, {
   useContext
 } from "react";
 import firebase from "../config/fbConfig";
+import "firebase/auth";
 import { ProjectReducer } from "../store/reducers/ProjectReducer";
 
 interface Props {

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useColumnTask } from "../../columnProvider/index";
 
 export const SignIn: React.FC = () => {
-  const [logInData, setLogInData] = useState<
-    { email: string; password: string } | {}
-  >({});
+  const getDataContext: any = useColumnTask();
+
+  const [logInData, setLogInData] = useState<{
+    email: string;
+    password: string;
+  }>({ email: "", password: "" });
 
   const onHandleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setLogInData({
@@ -11,10 +15,14 @@ export const SignIn: React.FC = () => {
       [e.currentTarget.id]: e.currentTarget.value
     });
   };
-  
+
   const OnHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(logInData);
+    getDataContext.dispatch({
+      type: "SinIn",
+      email: logInData.email,
+      password: logInData.password
+    });
   };
   return (
     <div className="container">
