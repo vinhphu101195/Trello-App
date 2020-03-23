@@ -22,6 +22,8 @@ const TableContextProvider = (props: Props) => {
   const [data, dispatch] = useReducer<any>(ProjectReducer, initialState);
 
   useEffect(() => {
+    console.log(data);
+
     firebase
       .firestore()
       .collection("project")

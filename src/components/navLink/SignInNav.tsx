@@ -7,18 +7,16 @@ interface Props {}
 export const SignInNav: React.FC<Props> = () => {
   const getDataContext: any = useColumnTask();
 
+  const signOutMethod = () => {
+    getDataContext.dispatch({
+      type: "SignOut"
+    });
+  };
+
   return (
     <ul className="right">
       <li>
-        <NavLink to="/create">New Plan</NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/"
-          onClick={getDataContext.dispatch({
-            type: "SinOut"
-          })}
-        >
+        <NavLink to="/signin" onClick={signOutMethod}>
           Log Out
         </NavLink>
       </li>

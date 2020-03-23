@@ -19,7 +19,7 @@ export const SignIn: React.FC = () => {
   const OnHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     getDataContext.dispatch({
-      type: "SinIn",
+      type: "SignIn",
       email: logInData.email,
       password: logInData.password
     });
